@@ -1,112 +1,119 @@
-<%-- 
-    Document   : agregarPerro
-    Created on : 20/09/2023, 4:50:03 p. m.
-    Author     : Sistemas
---%>
-<style>
-    /* styles.css */
-/* Estilos para el formulario */
-.form-control {
-    margin-bottom: 10px;
-}
-
-/* Estilos para la tabla */
-.table {
-    width: 100%;
-}
-
-/* Estilos para el encabezado de la tabla */
-.table thead {
-    background-color: #f5f5f5;
-}
-</style>
-   
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<%@page import="com.mycompany.expocanina2.ExposicionPerros"%>
+<%@page import="com.mycompany.expocanina2.Perro"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList"%>
+
+
 <!DOCTYPE html>
 <%@include file= "templates/header.jsp" %>
-<!-- Image and text -->
+        
+ <!--author:Jorge Andres, Leidy Cuasquer, Valentina Peñafiel-->
+ 
+ <!--para la imagen de los perros se debe usar una barra de boostrap-->
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">
-    <img src="imagenes/perros.jpg" width="880" height="100" class="d-inline-block align-top" alt="">
- 
-  </a>
+    <img src="imagenes/perros.jpg" width="875" height="150" class="d-inline-block align-top" alt="">    
+  </a>
 </nav>
-        
-        <div class = "container text-center">  <!-- clase contenedora --> 
-            <h1>Exposicion Canina</h1>
-            <div class = "row"  > <!-- clase row  -->
-                <div class = "col"  >
-                <div class = "card card-body"> <!-- targeta de trabajo -->
-                   <form action="SvVideo" method="POST">         
-            
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" name="nombre" class = "form-control"><br>
 
-                    <label for="raza">Raza:</label>
-                    <input type="text" name="raza" class = "form-control"><br>
-
-                    <label for="imagen">Imagen:</label>
-                    <input type="text" name="imagen" class = "form-control"><br>
-                    
-                    <label for="puntos">Puntos:</label>
-                    <input type="text" name="puntos" class ="form-control"><br>
-
-                    <label for="edad">Edad:</label>
-                    <input type="text" name="edad" class ="form-control"><br>
-
-
-                    <input type="submit" value="Agregar perro" class ="form-control">
-                </form>  
-                <a href="index.jsp">Volver al menu</a> 
-                </div>
-            </div>
-            
+ <!--toda esta parte trata acerca de la tabla y sus columnas-->
+        <div class="container p-4"> 
+            <div class="row">
+            <div class="col-md-4">  
+                <div class="card card-body"> 
+                
+             <!--todo el codigo de aqui en adelante sirve para registrar los datos del perro-->
+                    <h3>Insertar nuevo perro</h3>
+                  <form action="svPerros" method="POST">         
+                    <!--espacio para agregar el nombre del perro-->
+                    <div class="input-group mb-3">
+                      <label class="input-group-text" for="nombre">Nombre:</label>
+                      <input type="text" name ="nombre" class="form-control">
+                    </div>                                            
+                 
+                      <div class="input-group mb-3">
+                      <label class="input-group-text" for="raza">Raza:</label>
+                      <input type="text" name="raza" class="form-control">
+                    </div>
+                   
+                      <div class="input-group mb-3">
+                      <label class="input-group-text" for="imagen">Imagen:</label>
+                      <input type="text" name="imagen" class="form-control"  >
+                    </div>
+                                   
+                          <div class="input-group mb-3">
+                      <label class="input-group-text" for="puntos">Puntos:</label>
+                        <select name="puntos" class="form-select" >
+                          <option selected>0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>                          
+                        </select>                  
+                       </div>
+                     
+                      <div class="input-group mb-3">
+                      <label class="input-group-text" for="edad">Edad:</label>
+                      <input type="text" name="edad"  class="form-control"   >
+                    </div>
+                      <!-- esta es la parte para tener un boton que agregue a la lista todos los datos del perro --> 
+                      <input type="submit" value="Agregar perro" class ="form-control"</>
+                </form><br>
                 
                 
-            <div class = "col-md-8"  >
-                <table class="table table-bordered">
-                    <thead><!-- comment -->
-                        <tr><!-- comment -->
-                            <th> Nombre </th>
-                            <th> Raza </th>
-                            <th> Imagen </th>
-                            <th> Puntos </th>
-                            <th> Edad</th>
+                <a href="index.jsp">Volver al Menu</a> 
+                </div>    
+            </div> 
+             
+                
+                <!-- LO anterior ingresado se guarda en la lista de acá -->
+            <div class="col-md-8">
+                    <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Raza</th>
+                            <th>foto</th>
+                            <th>Puntos</th>
+                            <th>Edad</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>  </td>
-                            <td> </td>
-                            <td> </td>
-                            <td>  </td>
-                            <td>  </td>
-                            
-                        </tr>
-                                                <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            <td> </td>
-                            
-                        </tr>
-                                                <tr>
-                            <td> </td>
-                            <td> </td>
-                            <td>  </td>
-                            <td>  </td>
-                            <td>  </td>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-<form>
-  
-            
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>            
- <%@include file= "templates/footer.jsp" %>
+                         <%
+                             
+                                ServletContext context = request.getServletContext();
+                                ArrayList<Perro> darPerros = ExposicionPerros.cargarPerros(context);
+
+                                
+                                if (darPerros != null) {
+                                    for (Perro perro : darPerros) { %>
+                            <tr>
+                                <td><%= perro.getNombre() %></td>
+                                
+                                <td><%= perro.getRaza() %></td>
+                                
+                                <td><%= perro.getImagen() %></td>
+                                
+                                <td><%= perro.getPuntos() %></td>
+                                
+                                <td><%= perro.getEdad() %></td>
+                                <td></td>
+                                
+                            </tr>
+                            <%
+                                }
+                                }
+                            %>
+                       </tbody> 
+                       </table>
+                </div>
+               </div>  
+            </div>    
+       <%@include file= "templates/footer.jsp" %>
