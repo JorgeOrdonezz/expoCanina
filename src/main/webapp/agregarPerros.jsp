@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <%@include file= "templates/header.jsp" %>
         
- <!--author:Jorge Andres, Leidy Cuasquer, Valentina Peñafiel-->
+ <!--author:Jorge Andres, Leidy Cuasquer, Valentina Peñafiel.-->
  
  <!--para la imagen de los perros se debe usar una barra de boostrap-->
 <nav class="navbar navbar-light bg-light">
