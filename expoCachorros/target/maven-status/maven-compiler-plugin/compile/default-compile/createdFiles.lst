@@ -1,0 +1,7 @@
+com\umariana\expocachorros\resources\JavaEE8Resource.class
+com\umariana\expocachorros\JAXRSConfiguration.class
+servlets\SvPerro.class
+com\umariana\expocachorros\ExpoPerros.class
+com\umariana\expocachorros\Perro.class
+servlets\SvEditarPerro.class
+servlets\SvEliminar.class
